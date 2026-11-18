@@ -1,0 +1,20 @@
+{
+  "name": "mullet-url-shortener",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A URL shortener whose every redirect passes a 200-hearing tribunal, a JVM-held check digit and a route lottery.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.17"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node src/main.mjs",
+    "acceptance": "node --test tests/acceptance/acceptance.test.mjs",
+    "test": "npm run build && node --test --experimental-test-coverage --test-coverage-exclude='src/generated/**' 'tests/**/*.test.mjs'",
+    "lineup": "node scripts/lineup.mjs",
+    "loc": "node scripts/loc.mjs",
+    "board": "node scripts/board.mjs",
+    "ci": "npm run acceptance && npm test && npm run lineup && npm run loc"
+  }
+}

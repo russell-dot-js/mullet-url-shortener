@@ -1,0 +1,11 @@
+CASE C00002 — GET /oxbRxJ?case
+Custody: check slot 45 for payload 362542491; the JVM stamped the bill
+Cargo: https://example.com/bakery/lisbon/the-trailing-slash/recipes/pastel-de-nata
+Hearings traversed: 200 (200 per attempt, 1 attempt)
+Final roll: 200 of 200 carried
+Treasury: reconciled; 9602 postings in 3201 entries; 5000000000000 of 5000000000000 units on the books
+Escrow: 170782 units settled to treasury
+Notable ruling: "Admiralty claim against the cook before Registrar of Short Codes"; enacted, fees cleared 2193 across 16 underwriters
+Minority report (the night janitor): the roll counted 200 hearings and 40 distinct titles
+Final signature: Ombudsman of Redirects, after 0 appeals
+Result: discharged to https://example.com/bakery/lisbon/the-trailing-slash/recipes/pastel-de-nata (302, docket only)

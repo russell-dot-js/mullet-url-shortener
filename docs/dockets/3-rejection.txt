@@ -1,0 +1,22 @@
+CASE C00005 — GET /oxbRxa?case
+Custody: check slot 10 for payload 362542491; the JVM refused the bill
+Cargo: https://example.com/bakery/lisbon/the-trailing-slash/recipes/pastel-de-nata
+Hearings traversed: 600 (200 per attempt, 3 attempts)
+Final roll: 0 of 200 carried
+Treasury: reconciled; 9602 postings in 3201 entries; 5000000000000 of 5000000000000 units on the books
+Escrow: 170782 units settled to applicant
+Notable ruling: "Admiralty claim against the cook before Registrar of Short Codes"; remanded, fees cleared 2193 across 16 underwriters
+Minority report (the night janitor): the roll counted 200 hearings and 40 distinct titles
+Final signature: Ombudsman of Redirects, after 2 appeals
+Result: remanded (docket only)
+
+CASE C00007 — GET /003d7U?case
+Custody: check slot 56 for payload 12345; the JVM stamped the bill
+Hearings traversed: 600 (200 per attempt, 3 attempts)
+Final roll: 0 of 200 carried
+Treasury: reconciled; 9602 postings in 3201 entries; 5000000000000 of 5000000000000 units on the books
+Escrow: 169373 units settled to applicant
+Notable ruling: "Customs declaration for six characters before Ombudsman of Redirects"; remanded, fees cleared 2172 across 16 underwriters
+Minority report (the night janitor): the roll counted 200 hearings and 40 distinct titles
+Final signature: Ombudsman of Redirects, after 2 appeals
+Result: remanded (docket only)

@@ -1,0 +1,17 @@
+CASE C00002 — POST /shorten
+Routes drawn: derive=rigged, encode=table
+Result: registered 000wgV
+Note: jurisdictional collision at salt 0: 000g8k is already held; appealing
+Note: registered 000wgV at salt 1
+
+CASE C00004 — GET /000wgV?case
+Custody: check slot 57 for payload 2000; the JVM stamped the bill
+Cargo: https://example.com/second/cargo/on/the/manifest
+Hearings traversed: 200 (200 per attempt, 1 attempt)
+Final roll: 200 of 200 carried
+Treasury: reconciled; 9602 postings in 3201 entries; 5000000000000 of 5000000000000 units on the books
+Escrow: 170719 units settled to treasury
+Notable ruling: "Admiralty claim against the cook before Port Authority"; enacted, fees cleared 2196 across 16 underwriters
+Minority report (the night janitor): the roll counted 200 hearings and 40 distinct titles
+Final signature: Ombudsman of Redirects, after 0 appeals
+Result: discharged to https://example.com/second/cargo/on/the/manifest (302, docket only)

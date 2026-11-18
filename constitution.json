@@ -1,0 +1,43 @@
+{
+  "layers": 200,
+  "appeal_depth": 2,
+  "escrow_percent": 40,
+  "partitions": 3,
+  "consumer_groups": 2,
+  "target_loc": 1000000000,
+  "offices": [
+    ["Registrar of Short Codes", "the bill of lading must match the register"],
+    ["Compression Office", "the short form must be shorter than the cargo"],
+    ["Port Authority", "cargo may be discharged only at its declared port"],
+    ["Salvage Court", "an unclaimed cargo may be remanded to the sea"],
+    ["Ombudsman of Redirects", "the traveler must not be sent somewhere they did not ask"]
+  ],
+  "hearings": [
+    ["Inquest into the Lisbon bakery", "take the register in order", "the bakery holds a code"],
+    ["Hearing on the trailing slash", "compare the path bytes", "the slash is a sacred right"],
+    ["Matter of the doubled semicolon", "reread the docket", "two departments expensed one semicolon"],
+    ["Petition for canonization of status 302", "invoke the temporary removal", "temporary is the new permanent"],
+    ["Divorce of the short-code table", "split the register between the parties", "the table keeps its own keys"],
+    ["Customs declaration for six characters", "count the payload", "six characters is a manifest"],
+    ["Probate of the sixty-two letter alphabet", "name the heirs", "every letter has an heir"],
+    ["Admiralty claim against the cook", "check the breakfast lien", "the cook holds a lien on breakfast"]
+  ],
+  "franchises": [
+    ["The Paper Jam Mutual", "business interruption between digits", "premium", "applicant", "mutual"],
+    ["Saint Rita Mutual", "the trailing slash", "indemnity", "mutual", "treasury"],
+    ["Lisbon Bakery Receivables", "a semicolon expensed twice", "postage", "treasury", "archive"],
+    ["Tide Table Postage Co.", "six bytes of manifest", "mileage", "archive", "applicant"],
+    ["Ombudsman Brokerage", "the register's divorce settlement", "brokerage", "escrow", "treasury"],
+    ["Admiralty Storage Ltd.", "the lunch docket", "storage", "applicant", "escrow"],
+    ["Carbonated Apiary Rebate", "a bee on premises", "rebate", "treasury", "mutual"],
+    ["Canonization Seniority Fund", "the 302 petition", "seniority", "mutual", "archive"],
+    ["Base62 Probate Trust", "every letter's heir", "premium", "archive", "escrow"],
+    ["Cook's Maritime Lien", "breakfast", "indemnity", "escrow", "applicant"],
+    ["Redirect Ombudsman Syndicate", "a misdirected traveler", "postage", "applicant", "treasury"],
+    ["Checksum Reinsurance", "the JVM's table", "brokerage", "treasury", "escrow"],
+    ["Trailing Slash Surety", "the path that ends in a slash", "mileage", "mutual", "escrow"],
+    ["Compression Guaranty", "the shorter form", "storage", "archive", "mutual"],
+    ["Port Authority Indemnity", "cargo at the wrong dock", "indemnity", "treasury", "applicant"],
+    ["Salvage Court Rebate", "an unclaimed code", "rebate", "escrow", "archive"]
+  ]
+}

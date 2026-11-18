@@ -1,0 +1,11 @@
+CERTIFICATE OF DISCHARGE
+Issued by the Ombudsman of Redirects, as a souvenir of the board's record
+
+Cargo discharged: https://example.com/bakery/lisbon/the-trailing-slash/recipes/pastel-de-nata
+Hearings sat: 200 (200 chartered, 1 attempt)
+Underwriters per hearing: 16
+Treasury: reconciled
+Maintained source: 2,820 lines
+Shortfall against the personal target of 1,000,000,000 lines: 999,997,180 lines
+
+This certificate is not a bill of lading and confers no right of redirection.

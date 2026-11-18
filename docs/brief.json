@@ -1,0 +1,235 @@
+{
+  "administration": "municipality",
+  "orders": [
+    {
+      "appropriation": "layers",
+      "effective": 200,
+      "direction": "Minimum hearings a fresh business request must actually traverse. Count them at runtime."
+    },
+    {
+      "appropriation": "deployment",
+      "effective": "processes",
+      "direction": "Put services in memory, behind local process boundaries, or in separately started containers with readiness checks."
+    },
+    {
+      "appropriation": "languages",
+      "effective": "host language plus its least convenient neighbor",
+      "direction": "Assign each language exclusive custody of an operation. A second language must be called."
+    },
+    {
+      "appropriation": "ministries",
+      "effective": 5,
+      "direction": "Split decision rights between this many agencies. Give each an asset it can withhold."
+    },
+    {
+      "appropriation": "architect",
+      "effective": "the registrar who inherited the short-code table in a divorce",
+      "direction": "Let this official's prior employment explain the data model."
+    },
+    {
+      "appropriation": "legal_system",
+      "effective": "admiralty",
+      "direction": "Model the request as cargo, an estate, a parcel or a petition for canonization."
+    },
+    {
+      "appropriation": "sacred_asset",
+      "effective": "the trailing slash",
+      "direction": "Represent this as a separately transferable right."
+    },
+    {
+      "appropriation": "opposition",
+      "effective": "the previous owner of the verb",
+      "direction": "Give this party standing to appeal a successful result."
+    },
+    {
+      "appropriation": "founding_scandal",
+      "effective": "two departments issued the same six-character code to a Lisbon bakery",
+      "direction": "Derive a real constraint from this incident. Make a test reproduce the disputed case."
+    },
+    {
+      "appropriation": "currency",
+      "effective": "laminated bills of lading",
+      "direction": "Denominate actual debits and credits in this unit."
+    },
+    {
+      "appropriation": "fee_basis",
+      "effective": "crossing",
+      "direction": "Calculate internal charges on payload size, testimony or service handoffs."
+    },
+    {
+      "appropriation": "escrow_percent",
+      "effective": 40,
+      "direction": "Withhold this share of each fee pending discharge."
+    },
+    {
+      "appropriation": "depreciation_years",
+      "effective": 7,
+      "direction": "Generate the write-down schedule for a durable entitlement."
+    },
+    {
+      "appropriation": "tax_brackets",
+      "effective": 3,
+      "direction": "Apply progressive internal tariffs to the thing being counted."
+    },
+    {
+      "appropriation": "insurer",
+      "effective": "Saint Rita Mutual",
+      "direction": "Have this institution assume a named failure and issue a policy number."
+    },
+    {
+      "appropriation": "market",
+      "effective": "auction",
+      "direction": "Allocate the scarce asset using tenders, coupons or a family tree."
+    },
+    {
+      "appropriation": "bidders",
+      "effective": 2,
+      "direction": "Solicit competing bids with different price schedules. Preserve losing bids."
+    },
+    {
+      "appropriation": "ballot",
+      "effective": "majority",
+      "direction": "Implement this decision rule and retain the minority opinion."
+    },
+    {
+      "appropriation": "quorum",
+      "effective": 3,
+      "direction": "Seat this many voting delegates before an ordinary resolution."
+    },
+    {
+      "appropriation": "appeal_depth",
+      "effective": 2,
+      "direction": "Cap the chain of remands here. Specify who finally signs."
+    },
+    {
+      "appropriation": "conflict",
+      "effective": "treaty",
+      "direction": "Resolve overlapping entitlements by covenant order, ranked contest or a usage calendar."
+    },
+    {
+      "appropriation": "precedent",
+      "effective": "binding",
+      "direction": "Choose whether a prior equivalent ruling dictates, advises or stays hidden from the next hearing."
+    },
+    {
+      "appropriation": "broker",
+      "effective": "local-log",
+      "direction": "Use an inspectable local append log or wire a Kafka deployment in the requested environment."
+    },
+    {
+      "appropriation": "partitions",
+      "effective": 3,
+      "direction": "Route cases by stable business key and record the partition."
+    },
+    {
+      "appropriation": "consumer_groups",
+      "effective": 2,
+      "direction": "Give this many downstream subscribers independent offsets and duties."
+    },
+    {
+      "appropriation": "event_tense",
+      "effective": "future-perfect",
+      "direction": "Name events after what happened or what Counsel expects will have happened."
+    },
+    {
+      "appropriation": "schema_generations",
+      "effective": 3,
+      "direction": "Design this many wire formats and make the current reader accept the founding-era payload."
+    },
+    {
+      "appropriation": "legacy_medium",
+      "effective": "an eighty-column card with a coffee ring in column nine",
+      "direction": "Implement a round trip through the obsolete representation."
+    },
+    {
+      "appropriation": "chain",
+      "effective": "hash",
+      "direction": "Link receipts, summarize batches in a tree, or countersign with independent local notaries."
+    },
+    {
+      "appropriation": "validators",
+      "effective": 3,
+      "direction": "Obtain receipts from this many independently named witnesses."
+    },
+    {
+      "appropriation": "retention",
+      "effective": "reign",
+      "direction": "Derive archive boundaries from immortality, accounting or regime change."
+    },
+    {
+      "appropriation": "replay",
+      "effective": "reenactment",
+      "direction": "Rebuild the outcome directly, through an appeals panel, or by restaging the recorded votes."
+    },
+    {
+      "appropriation": "consistency",
+      "effective": "liturgical",
+      "direction": "Publish immediately, on consumer catch-up, or at the next deterministic ritual tick."
+    },
+    {
+      "appropriation": "clock",
+      "effective": "logical",
+      "direction": "Timestamp events with real time, causal sequence, or sides of a recorded lunch recess."
+    },
+    {
+      "appropriation": "exception_policy",
+      "effective": "ombudsman",
+      "direction": "Route failed cases to a complaint desk, inquest or consular mission that reports the cause."
+    },
+    {
+      "appropriation": "disaster",
+      "effective": "the deputy who knows the password takes annual leave",
+      "direction": "Simulate this failure and demonstrate an alternate route to the same result."
+    },
+    {
+      "appropriation": "duplicates",
+      "effective": "exhibit",
+      "direction": "Deduplicate a replay and record the duplicate as forgiven, returned or admitted into evidence."
+    },
+    {
+      "appropriation": "receipts",
+      "effective": "docket",
+      "direction": "Expose the final disposition, selected findings, or every witness and vote."
+    },
+    {
+      "appropriation": "audience",
+      "effective": "a CFO who prints JSON",
+      "direction": "Address the receipts to this reader and choose an appropriate representation."
+    },
+    {
+      "appropriation": "diction",
+      "effective": "a zoning officer explaining a submarine",
+      "direction": "Set the voice of rulings and error messages."
+    },
+    {
+      "appropriation": "minority_report",
+      "effective": "a handwritten objection from the night janitor",
+      "direction": "Give dissent a consistent author and one verifiable observation."
+    },
+    {
+      "appropriation": "kpi",
+      "effective": "outstanding obligations per square inch of monitor",
+      "direction": "Calculate a ridiculous second metric from real runtime values."
+    },
+    {
+      "appropriation": "target_loc",
+      "effective": 1000000000,
+      "direction": "Subtract measured maintained source lines from the personal employment threshold."
+    },
+    {
+      "appropriation": "auditor",
+      "effective": "the person whose bonus depends on counting braces",
+      "direction": "Identify the accountable author of the source-line valuation."
+    },
+    {
+      "appropriation": "forbidden_shortcut",
+      "effective": "asking the value directly",
+      "direction": "Draw the prohibited edge on the architecture sketch, then implement the approved detour."
+    },
+    {
+      "appropriation": "souvenir",
+      "effective": "a deed suitable for framing in a rented office",
+      "direction": "Hand the user one inspectable artifact from a real run."
+    }
+  ]
+}
