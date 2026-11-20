@@ -1,7 +1,17 @@
 // The front door: a thin HTTP adapter over the application. Nothing in here decides anything.
+import { readFileSync } from "node:fs";
 import { createServer } from "node:http";
 
 const MAX_BODY_BYTES = 8 * 1024;
+
+// The browser page is static. It is read once and served before the body is touched; it only calls endpoints the application already answers.
+const PAGE = readFileSync(new URL("../public/index.html", import.meta.url));
+const PAGE_HEADERS = {
+  "content-type": "text/html; charset=utf-8",
+  "cache-control": "no-cache",
+  "x-content-type-options": "nosniff",
+  "content-security-policy": "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+};
 
 function readBody(request) {
   return new Promise((resolve, reject) => {
@@ -19,6 +29,11 @@ function readBody(request) {
 
 export function createHttpServer(app) {
   return createServer(async (request, response) => {
+    if (request.method === "GET" && request.url.split("?")[0] === "/ui") {
+      response.writeHead(200, PAGE_HEADERS);
+      response.end(PAGE);
+      return;
+    }
     let body;
     try {
       body = await readBody(request);

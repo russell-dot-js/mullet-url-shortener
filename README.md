@@ -40,6 +40,7 @@ curl -s  'localhost:8080/<code>?case'     # the docket for that visit
 | `GET /<code>?case` | `200` the docket for that hearing, as text |
 | `GET /_cases/<id>` | the docket for any case on the record |
 | `GET /_healthz` | status, hearings per attempt, appeal depth, ledger size |
+| `GET /ui` | the same service as a page in the browser: shorten a link, read its bill and docket |
 | `GET /` | help text |
 
 Every response carries `x-mullet-case`. Unsupported methods get `405` with `allow: GET, POST`.
@@ -150,7 +151,7 @@ harness refuses both. The report is in `docs/lineup.md`.
 
 ## Coverage
 
-Measured by `npm test` with Node's coverage: 99.33% of lines, 93.87% of branches and 98.41% of functions across the
+Measured by `npm test` with Node's coverage: 99.34% of lines, 93.93% of branches and 98.42% of functions across the
 modules the suite loads, with `src/generated/**` excluded. The uncovered lines and the unmeasured child processes are
 listed in `docs/coverage.md`.
 
@@ -176,3 +177,6 @@ comment, not directive, not label-only. The command exits nonzero below 10%. The
 - The CLI entry points of `scripts/engrave.mjs` and `scripts/jasm.mjs` and the server process started by `src/main.mjs`
   are not in the coverage numbers.
 - The statute's 200 hearings are 40 distinct titles repeated five times.
+
+
+Built with [Mullet](https://github.com/russell-dot-js/mullet).

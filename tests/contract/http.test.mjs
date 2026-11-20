@@ -77,6 +77,20 @@ test("the health and help pages answer, and unsupported methods are turned away"
   assert.equal((await post("/elsewhere", "{}")).status, 404);
 });
 
+test("GET /ui serves the browser page under a locked-down policy, with or without a query", async () => {
+  for (const path of ["/ui", "/ui?from=test"]) {
+    const response = await fetch(`${base}${path}`);
+    assert.equal(response.status, 200, path);
+    assert.match(response.headers.get("content-type"), /^text\/html/);
+    assert.match(response.headers.get("content-security-policy"), /default-src 'none'/);
+    assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+    const html = await response.text();
+    assert.match(html, /<form id="shorten"/);
+    // Server text reaches the page as text only: no markup is ever parsed from a response.
+    assert.doesNotMatch(html, /innerHTML|insertAdjacentHTML|document\.write/);
+  }
+});
+
 test("an oversized body is refused before the court sees it", async () => {
   const response = await post("/shorten", JSON.stringify({ url: "https://example.com/" + "a".repeat(9000) }));
   assert.equal(response.status, 413);

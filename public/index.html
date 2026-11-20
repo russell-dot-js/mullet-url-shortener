@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Mullet URL Shortener</title>
+<style>
+:root {
+  --paper: #F2ECDD;
+  --field: #FBF8F0;
+  --ink: #1F1B16;
+  --carbon: #6A6255;
+  --rule: #CFC6B2;
+  --ledger: #2F5D62;
+  --stamp: #A8382A;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1A1915;
+    --field: #23211C;
+    --ink: #EDE6D6;
+    --carbon: #A39B88;
+    --rule: #3B372E;
+    --ledger: #7FBFC2;
+    --stamp: #E0826F;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+.page { max-width: 34rem; margin: 0 auto; padding: 2.5rem 16px 3rem; }
+h1 { margin: 0 0 0.6rem; font-size: 2.2rem; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; }
+h2 { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+.lede { margin: 0 0 2.25rem; color: var(--carbon); }
+label { display: block; margin-bottom: 0.35rem; color: var(--carbon); font-size: 0.92rem; }
+form { display: grid; gap: 0.9rem; }
+input {
+  width: 100%;
+  padding: 0.55rem 0.2rem;
+  border: 0;
+  border-bottom: 1.5px solid var(--ink);
+  border-radius: 0;
+  background: var(--field);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+}
+input::placeholder { color: var(--carbon); opacity: 0.7; }
+button {
+  justify-self: start;
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: progress; }
+button.ghost { background: transparent; color: var(--ink); }
+:focus-visible { outline: 2px solid var(--ledger); outline-offset: 3px; }
+.message { min-height: 1.6em; margin: 0.9rem 0 0; color: var(--carbon); font-size: 0.95rem; }
+.message.error { color: var(--stamp); }
+
+.bill { margin-top: 2rem; padding: 1.25rem; border: 1px solid var(--rule); background: var(--field); }
+.bill[hidden] { display: none; }
+.bill-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1rem; }
+.bill-head h2 { margin: 0; }
+.stamp {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  color: var(--ledger);
+  font-size: 0.92rem;
+  transform: rotate(-2deg);
+  animation: land 260ms ease-out both;
+}
+.stamp.replayed { color: var(--carbon); }
+@keyframes land {
+  from { opacity: 0; transform: rotate(-7deg) scale(1.2); }
+  to { opacity: 1; transform: rotate(-2deg) scale(1); }
+}
+dl.facts { display: grid; grid-template-columns: 7rem 1fr; gap: 0.7rem 1rem; margin: 1.25rem 0; font-size: 0.95rem; }
+dl.facts dt { color: var(--carbon); }
+dl.facts dd { margin: 0; font-family: var(--mono); font-size: 0.9rem; overflow-wrap: anywhere; }
+dl.facts a { color: var(--ledger); }
+@media (max-width: 30rem) {
+  dl.facts { grid-template-columns: 1fr; gap: 0; }
+  dl.facts dt { margin-top: 0.7rem; }
+  dl.facts dt:first-child { margin-top: 0; }
+}
+
+.docket { margin-top: 2.75rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+.docket .intro { margin: 0 0 1rem; color: var(--carbon); font-size: 0.95rem; }
+.docket pre {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  overflow: auto;
+  max-height: 28rem;
+  border: 1px solid var(--rule);
+  background: var(--field);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.docket pre[hidden] { display: none; }
+
+.court { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.92rem; color: var(--carbon); }
+.court h2 { margin-bottom: 0.4rem; font-size: 1rem; color: var(--carbon); }
+.court dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.2rem 1.25rem; margin: 0; }
+.court dd { margin: 0; font-family: var(--mono); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <main>
+    <h1>Shorten a link</h1>
+    <p class="lede">Paste a long link. The port registers it as cargo and returns a short code, with a case number for its record.</p>
+
+    <form id="shorten">
+      <div>
+        <label for="url">Link to shorten</label>
+        <input id="url" name="url" type="url" required inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="https://example.com/a/long/path">
+      </div>
+      <button id="shorten-submit" type="submit">Shorten link</button>
+    </form>
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+
+    <section id="bill" class="bill" aria-labelledby="bill-title" hidden>
+      <div class="bill-head">
+        <h2 id="bill-title">Bill of lading</h2>
+        <span id="stamp" class="stamp"></span>
+      </div>
+      <dl class="facts">
+        <dt>Short link</dt><dd><a id="short" target="_blank" rel="noopener noreferrer"></a></dd>
+        <dt>Code</dt><dd id="code"></dd>
+        <dt>Original link</dt><dd id="original"></dd>
+        <dt>Case</dt><dd id="case"></dd>
+      </dl>
+      <button id="open-from-bill" class="ghost" type="button">Open docket</button>
+    </section>
+
+    <section class="docket" aria-labelledby="docket-title">
+      <h2 id="docket-title">Docket</h2>
+      <p class="intro">Look up a case by its number. Or enter a short code to inspect its hearing again. Inspections do not count as discharges.</p>
+      <form id="lookup">
+        <div>
+          <label for="ref">Case number or short code</label>
+          <input id="ref" name="ref" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="C00001 or oxbRxJ">
+        </div>
+        <button type="submit">Open docket</button>
+      </form>
+      <p id="docket-status" class="message" role="status" aria-live="polite">No docket open.</p>
+      <pre id="docket" hidden></pre>
+    </section>
+  </main>
+
+  <footer class="court">
+    <h2>The court</h2>
+    <dl>
+      <dt>Status</dt><dd id="health-status">Checking…</dd>
+      <dt>Hearings per attempt</dt><dd id="health-hearings">—</dd>
+      <dt>Appeal depth</dt><dd id="health-appeal">—</dd>
+      <dt>Ledger entries</dt><dd id="health-ledger">—</dd>
+    </dl>
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  // Server text only ever reaches the page through textContent.
+  const $ = (id) => document.getElementById(id);
+  const shortenForm = $("shorten");
+  const urlInput = $("url");
+  const shortenButton = $("shorten-submit");
+  const message = $("message");
+  const bill = $("bill");
+  const stamp = $("stamp");
+  const shortLink = $("short");
+  const codeCell = $("code");
+  const originalCell = $("original");
+  const caseCell = $("case");
+  const openDocket = $("open-from-bill");
+  const lookupForm = $("lookup");
+  const refInput = $("ref");
+  const docketStatus = $("docket-status");
+  const docket = $("docket");
+
+  function say(target, text, isError = false) {
+    target.textContent = text;
+    target.classList.toggle("error", isError);
+  }
+
+  async function call(path, init) {
+    let response;
+    try {
+      response = await fetch(path, init);
+    } catch {
+      return { ok: false, status: 0, text: "The court cannot be reached. Check that the server is running.", data: null };
+    }
+    const text = await response.text();
+    let data = null;
+    if ((response.headers.get("content-type") || "").startsWith("application/json")) {
+      try { data = JSON.parse(text); } catch { data = null; }
+    }
+    return { ok: response.ok, status: response.status, text, data };
+  }
+
+  function reasonFor(result) {
+    return (result.data && result.data.error) || result.text.trim() || "The court refused the request.";
+  }
+
+  function showBill(record, replayed) {
+    stamp.textContent = replayed ? "Already registered" : "Registered";
+    stamp.classList.toggle("replayed", replayed);
+    // Restart the stamp's landing on every new bill.
+    stamp.style.animation = "none";
+    void stamp.offsetWidth;
+    stamp.style.animation = "";
+    shortLink.textContent = record.short;
+    if (/^https?:\/\//.test(record.short)) shortLink.href = record.short;
+    else shortLink.removeAttribute("href");
+    codeCell.textContent = record.code;
+    originalCell.textContent = record.url;
+    caseCell.textContent = record.case;
+    openDocket.onclick = () => {
+      refInput.value = record.case;
+      lookupForm.requestSubmit();
+    };
+    bill.hidden = false;
+  }
+
+  shortenForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    shortenButton.disabled = true;
+    say(message, "Filing the cargo…");
+    const result = await call("/shorten", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ url: urlInput.value.trim() }),
+    });
+    shortenButton.disabled = false;
+    if (!result.ok || !result.data) {
+      say(message, reasonFor(result), true);
+      return;
+    }
+    say(message, "");
+    showBill(result.data, result.status === 200);
+    refreshHealth();
+  });
+
+  lookupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const ref = refInput.value.trim();
+    if (!ref) {
+      docket.hidden = true;
+      say(docketStatus, "Enter a case number like C00001, or a short code.", true);
+      return;
+    }
+    const isCase = /^C\d{5}$/i.test(ref);
+    const caseId = ref.toUpperCase();
+    const path = isCase ? `/_cases/${caseId}` : `/${encodeURIComponent(ref)}?case`;
+    say(docketStatus, "Opening the docket…");
+    const result = await call(path);
+    if (!result.ok) {
+      docket.hidden = true;
+      say(docketStatus, reasonFor(result), true);
+      return;
+    }
+    say(docketStatus, isCase ? `Docket for ${caseId}.` : `Hearing inspected for ${ref}.`);
+    docket.textContent = result.text;
+    docket.hidden = false;
+  });
+
+  async function refreshHealth() {
+    const result = await call("/_healthz");
+    const health = result.ok && result.data ? result.data : null;
+    $("health-status").textContent = health ? health.status : "Unreachable";
+    $("health-hearings").textContent = health ? String(health.hearingsPerAttempt) : "—";
+    $("health-appeal").textContent = health ? String(health.appealDepth) : "—";
+    $("health-ledger").textContent = health ? String(health.ledger) : "—";
+  }
+
+  refreshHealth();
+})();
+</script>
+</body>
+</html>
