@@ -14,7 +14,7 @@ There are no npm dependencies.
 
 ```sh
 npm run build                      # charter -> statute book, engrave -> Mint.j, assemble -> Mint.class, javac Relay
-npm start                          # listens on PORT (default 8080)
+npm start                          # listens on PORT (default 8080); the page is at /ui
 
 curl -s -X POST localhost:8080/shorten \
   -H 'content-type: application/json' \
@@ -44,6 +44,29 @@ curl -s  'localhost:8080/<code>?case'     # the docket for that visit
 | `GET /` | help text |
 
 Every response carries `x-mullet-case`. Unsupported methods get `405` with `allow: GET, POST`.
+
+## The web page
+
+`GET /ui` serves one page, `public/index.html`, with its CSS and JavaScript inline and no dependencies. It uses the
+same endpoints as the table above, so it works against the same ledger as the command line.
+
+- **Shorten a link.** Paste a link and press *Shorten link*. The page shows a bill of lading with the short link, its
+  code, the original link and the case number. The stamp reads *Registered* for a new link, and *Already registered*
+  when the same link is submitted again.
+- **Open a docket.** *Open docket* on the bill loads that case. The lookup field also takes a case number such as
+  `C00001`, or a short code, which inspects its hearing as `?case` does. Inspections are not discharges.
+- **See the court.** The footer shows the health check: status, hearings per attempt, appeal depth and ledger entries.
+
+The server's text is only ever inserted into the page as text, never as markup. The response is served under a
+content-security-policy that allows only the page's own inline script and styles and same-origin requests.
+
+![The empty page](docs/screenshots/ui-empty.jpg)
+
+![A bill of lading after shortening a link](docs/screenshots/ui-bill.jpg)
+
+![The docket opened from the bill](docs/screenshots/ui-docket.jpg)
+
+The screenshots show the dark colour scheme. The page follows the browser's light or dark setting.
 
 ## How a request moves
 
@@ -170,7 +193,7 @@ comment, not directive, not label-only. The command exits nonzero below 10%. The
 
 ## Known gaps
 
-- The JVM share is 10.32% against a 10% quota. Every new line in `scripts/` or `tests/` dilutes it, and the quota
+- The JVM share is 10.22% against a 10% quota. Every new line in `scripts/` or `tests/` dilutes it, and the quota
   check will fail the build when it dips below.
 - The lineup has four copies. Each is convicted by one named exhibit, and no survivors were found among them. That is
   four faults, not a proof of coverage.
